@@ -90,6 +90,18 @@ class addToCartCest
      * @test
      * @throws Exception
      */
+    public function assertAfterAddingAllToCart() 
+    {
+        $this->setCookiesPage->setCookies();
+        $this->addToCartPage->assertAfterAddingAllToCart();
+        $this->setCookiesPage->grabCookies();
+    }
+
+    /**
+     * @depends assertAfterAddingAllToCart
+     * @test
+     * @throws Exception
+     */
     public function checkoutCartAction() 
     {
         $this->setCookiesPage->setCookies();
@@ -175,23 +187,5 @@ class addToCartCest
         $this->setCookiesPage->setCookies();
         $this->loginPage->logout();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
