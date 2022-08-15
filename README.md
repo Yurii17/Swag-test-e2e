@@ -54,7 +54,7 @@ Swag-test-e2e consists of next services:
 
 1. Run in one command - ```make run```
 
-2. ```docker-compose up -d chrome && sleep 5``
+2. ```docker-compose up -d chrome && sleep 5```
 
 3. ```docker-compose run --no-deps php vendor/bin/codecept run acceptance --env chrome --xml --html```
 
