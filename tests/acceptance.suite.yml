@@ -1,0 +1,33 @@
+actor: AcceptanceTester
+modules:
+  enabled:
+    - WebDriver:
+        url: '%APP_URL_TESTING%'
+        browser: chrome
+        host: '%WEB_DRIVER_HOST%'
+        windows_size: false
+    - \Helper\Acceptance
+    - Asserts
+
+env:
+  headless:
+    modules:
+      config:
+        WebDriver:
+          window_size: false
+          capabilities:
+            chromeOptions:
+              args: ["--headless","--disable-gpu", "--window-size=1920,1080"] # "--headless"
+            prefs:
+              'profile.managed_default_content_settings.notifications': 1
+  chrome:
+    modules:
+      config:
+        WebDriver:
+          browser: chrome
+          window_size: maximize
+          capabilities:
+            chromeOptions:
+              args: ["--disable-gpu", "--disable-dev-shm-usage",  "enable-automation", "--no-sandbox", "--disable-infobars", "--disable-dev-shm-usage", "--dns-prefetch-disable", "--profile-directory=Default"]
+            prefs:
+              'profile.managed_default_content_settings.notifications': 1

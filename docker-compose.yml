@@ -1,0 +1,51 @@
+version: "3.7"
+services:
+
+  php:
+    image: phpdockerio/php74-fpm:latest
+    working_dir: /application
+    privileged: true
+    volumes:
+      - ".:/application"
+
+  # vnc-recorder:
+  #   image: $DOCKER_REGISTRY_URL/swag-test/tools/vnc-recorder
+  #   command:  -P /pwdfile -o /tmp/record.flv chrome 5900
+  #   links:
+  #     - chrome:chrome
+  #   volumes:
+  #     - "./tests/_output/video:/tmp"
+  #     - ".:/application"
+
+  codeception:
+    image: codeception/codeception:latest
+    container_name: swag-test-e2e-codeception
+    links:
+      - chrome:chrome
+    volumes:
+      - ".:/project"
+
+  allure:
+    image: "frankescobar/allure-docker-service"
+    container_name: swag-test-e2e-allure
+    environment:
+      CHECK_RESULTS_EVERY_SECONDS: 1
+      KEEP_HISTORY: "TRUE"
+    ports:
+      - "4040:4040"
+      - "5050:5050"
+    volumes:
+      - ./tests/_output/allure-results:/app/allure-results
+
+  chrome:
+    image: selenium/standalone-chrome-debug:latest
+    container_name: swag-test-e2e-chrome
+    privileged: true
+    shm_size: 0
+    volumes:
+      - /dev/shm:/dev/shm
+    entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
+    ports:
+      - 4444:4444
+      - 5900:5900
+

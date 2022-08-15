@@ -1,0 +1,27 @@
+params:
+    - .env
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+        - Yandex\Allure\Codeception\AllureCodeception
+settings:
+    strict_xml: true
+    extensions:
+        enabled:
+            - Yandex\Allure\Codeception\AllureCodeception
+        config:
+            Yandex\Allure\Codeception\AllureCodeception:
+                deletePreviousResults: false
+                outputDirectory: allure-results
+                ignoredAnnotations:
+                    - env
+                    - dataprovider
+groups:
+    paracept_*: tests/_data/paracept_*

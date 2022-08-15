@@ -1,0 +1,24 @@
+{
+    "name": "swag-test/e2e",
+    "description": "Full scenario to easy run e2e test",
+    "type": "project",
+    "require-dev": {
+        "codeception/codeception": "^4.0",
+        "flow/jsonpath": "^0.5.0",
+        "fzaninotto/faker": "^1.4",
+        "codeception/module-webdriver": "^1.2",
+        "codeception/module-asserts": "^1.3",
+        "codeception/module-rest": "^1.4",
+        "codeception/module-phpbrowser": "^1.0"
+    },
+    "authors": [
+        {
+            "name": "yurii.lobas"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^3.0",
+        "allure-framework/allure-codeception": ">=1.1.0",
+        "ngraf/slack-codeception-extension": "^1.8"
+    }
+}
