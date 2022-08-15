@@ -24,9 +24,9 @@ Swag-test-e2e consists of next services:
 ```git clone https://github.com/Yurii17/Swag-test-e2e.git``` 
 2. open Swag-test-e2e dir
 
-3. ```docker-compose pull```
+3. ```cp .env.example .env```
 
-4. ```cp .env.example .env```
+4. ```docker-compose pull```
 
 5. ```docker-compose build```
 
@@ -36,16 +36,7 @@ Swag-test-e2e consists of next services:
 
 8. ```docker-compose run --no-deps php vendor/bin/codecept build```
 
-9. ```docker-compose up -d chrome && sleep 5 && docker-compose up -d vnc-recorder```
-
-10. ```docker-compose run --no-deps php vendor/bin/codecept run acceptance --env chrome --xml --html```
-
-
-## Run scenario
-
-**If you are using docker**
-
-1. ```make run```
+## Installing using docker
 
 **Without docker**
 
@@ -57,4 +48,20 @@ Swag-test-e2e consists of next services:
 
 4. ```codecept build```
 
-5. ```codecept run acceptance --env chrome --xml --html```
+## Run scenario
+
+**If you are using docker**
+
+1. Run in one command - ```make run```
+
+2. ```docker-compose up -d chrome && sleep 5``
+
+3. ```docker-compose run --no-deps php vendor/bin/codecept run acceptance --env chrome --xml --html```
+
+4. ```docker-compose down```
+
+**Without docker**
+
+- chrome ```codecept run acceptance --env chrome --xml --html```
+
+- headless ```codecept run acceptance --env headless --xml --html```
