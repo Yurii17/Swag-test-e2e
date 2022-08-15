@@ -74,7 +74,7 @@ class loginCest
         $this->loginPage->loginByLockedUserEmail();
     }
 
-     /**
+    /**
      * @depends loginWithLockedUserEmail
      * @test
      * @throws Exception
@@ -95,7 +95,7 @@ class loginCest
         $this->logoutAction();
     }
 
-     /**
+    /**
      * @depends loginWithProblemUserEmail
      * @test
      * @throws Exception
@@ -113,16 +113,5 @@ class loginCest
         $this->setCookiesPage->setCookies();
         $this->loginPage->logout();
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }
