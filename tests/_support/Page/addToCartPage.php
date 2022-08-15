@@ -37,7 +37,7 @@ class addToCartPage extends AbstractPage
      */
     public function __construct(AcceptanceTester $tester)
     {
-        parent::__construct($tester);
+        parent:: __construct($tester);
         $this->elements = new addToCartElements;
     }
 
@@ -47,9 +47,9 @@ class addToCartPage extends AbstractPage
      */
     public function beforeValueData()
     {
-        $this->beforeName = $this->tester->grabTextFrom($this->elements->titleName);
+        $this->beforeName  = $this->tester->grabTextFrom($this->elements->titleName);
         $this->beforePrice = $this->tester->grabTextFrom($this->elements->price);
-        $this->afterPrice = $this->tester->grabTextFrom($this->elements->lastPrice);
+        $this->afterPrice  = $this->tester->grabTextFrom($this->elements->lastPrice);
     }
 
     /**
@@ -73,7 +73,25 @@ class addToCartPage extends AbstractPage
         $this->tester->click($this->elements->addToCartBtn[3]);
         $this->tester->click($this->elements->addToCartBtn[4]);
         $this->tester->click($this->elements->addToCartBtn[5]);
+    }
+
+    /**
+     * @return void
+     * @throws Exception
+     */
+    public function assertAfterAddingAllToCart()
+    {
         $this->sameTextForm($this->elements->cartEl, '6');
+    }
+
+    /**
+     * @return void
+     * @throws Exception
+     */
+    public function assertAfterAddingAllToCartWithProblemUser()
+    {
+        $this->assertNotSameTextForm($this->elements->cartEl, '6');
+        $this->sameTextForm($this->elements->cartEl, '3');
     }
 
     /**
@@ -144,13 +162,23 @@ class addToCartPage extends AbstractPage
      * @return void
      * @throws Exception
      */
+    public function assertInvalidDataSortedByZAValueWithProblemUser()
+    {
+        $this->tester->click($this->elements->sortDropDown);
+        $this->tester->click($this->elements->sortClickEl[1]);
+        $this->assertNotSameTextForm($this->elements->titleName, $this->beforeName);
+    }
+
+    /**
+     * @return void
+     * @throws Exception
+     */
     public function sortedByLowToHighPrice()
     {
         $this->sorterForm(2);
         $this->assertNotSameTextForm($this->elements->titleName, $this->beforeName);
         $this->afterPrice;
-        if($this->beforePrice <=  $this->afterPrice) {
-            var_dump($this->beforePrice, $this->afterPrice);
+        if ($this->beforePrice <=  $this->afterPrice) {
             $this->tester->assertGreaterThan( $this->beforePrice, $this->afterPrice);
         }
     }
@@ -164,18 +192,10 @@ class addToCartPage extends AbstractPage
         $this->sorterForm(3);
         $this->assertNotSameTextForm($this->elements->titleName, $this->beforeName);
         if($this->beforePrice >=  $this->afterPrice) {
-            var_dump($this->afterPrice . ' >= ' . $this->beforePrice);
             $this->tester->assertGreaterThan($this->afterPrice, $this->beforePrice);
         } else{
             var_dump('____NOT OK____');
         }
     }
-
-
-
-
-
-   
-
 
 }
