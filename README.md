@@ -18,7 +18,7 @@ Swag-test-e2e consists of next services:
 - **faker**: Generate by faker data/value.
 - **allure**: A simple reporter.
 
-## Installing
+## Installing using docker
 
 1. Clone this repository
 ```git clone https://github.com/Yurii17/Swag-test-e2e.git``` 
@@ -36,7 +36,7 @@ Swag-test-e2e consists of next services:
 
 8. ```docker-compose run --no-deps php vendor/bin/codecept build```
 
-## Installing using docker
+## Installing
 
 **Without docker**
 
