@@ -13,16 +13,16 @@ Current project only checks acceptance e2e test cases flows.
 
 ## Getting Started
 
-Ping-pong consists of next services:
-- **Spatie**: A class to validate SSL certificates
-- **Guzzle**: Is a PHP HTTP client that makes it easy to send HTTP requests and trivial to integrate with web services
-- **Maknz Slack**: A simple PHP package for sending messages to Slack, with a focus on ease of use and elegant syntax
+Swag-test-e2e consists of next services:
+- **codeception**: Codeception collects and shares best practices and solutions for testing PHP web applications.
+- **faker**: Generate by faker data/value.
+- **allure**: A simple reporter.
 
 ## Installing
 
 1. Clone this repository
-```git clone http://``` 
-2. open ping-pong-service dir
+```git clone https://github.com/Yurii17/Swag-test-e2e.git``` 
+2. open Swag-test-e2e dir
 
 3. ```docker-compose pull```
 
@@ -43,4 +43,18 @@ Ping-pong consists of next services:
 
 ## Run scenario
 
-1. ``make run``
+**If you are using docker**
+
+1. ```make run```
+
+**Without docker**
+
+1. ```cp .env.example .env```
+
+2. ```composer clear-cache```
+
+3. ```composer install```
+
+4. ```codecept build```
+
+5. ```codecept run acceptance --env chrome --xml --html```
