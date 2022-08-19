@@ -36,9 +36,7 @@ Swag-test-e2e consists of next services:
 
 8. ```docker-compose run --no-deps php vendor/bin/codecept build```
 
-## Installing
-
-**Without docker**
+## Installing without docker
 
 1. ```cp .env.example .env```
 
@@ -48,9 +46,7 @@ Swag-test-e2e consists of next services:
 
 4. ```codecept build```
 
-## Run scenario
-
-**If you are using docker**
+## Run scenario using docker
 
 1. Run in one command - ```make run```
 
